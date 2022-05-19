@@ -8,13 +8,14 @@
 
 <div id="mySidenav" class="sidenav" style="width: 0px;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <div class="text-center user"><i class="fa-solid fa-user fa-5x"></i></div>
+  <div class="text-center user" *ngIf="log"><i class="fa-solid fa-user fa-5x"></i></div>
   <a routerLink="" data-content="Home">Home</a>
   <a routerLink="/work" data-content="Works/Projects">Works/Projects</a>
   <a routerLink="/about" data-content="About Us">About Us</a>
   <a routerLink="/contact" data-content="Contact Us">Contact Us</a>
-  <a routerLink="/login" data-content="Login">Login</a>
-  <a routerLink="/registration" data-content="Registration">Registration</a>
+  <a routerLink="/login" *ngIf="!log" data-content="Login">Login</a>
+  <a routerLink="/registration" *ngIf="!log" data-content="Registration">Registration</a>
+  <a href="" (click)="reset()" *ngIf="log">Logout</a>
 </div>
 <router-outlet></router-outlet>
 <footer>
@@ -36,8 +37,9 @@
                   <a class="footer-link nav-link" routerLink="/work"><i class="fas fa-tasks"></i> Projects</a>
                   <a class="footer-link nav-link" routerLink="/about" data-content="About Us"><i class="fas fa-address-card"></i> About Us</a>
                   <a class="footer-link nav-link" routerLink="/contact"><i class="fas fa-id-card-alt"></i> Contact Us</a>
-                  <a class="footer-link nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login</a>
-                  <a class="footer-link nav-link" routerLink="/registration"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;Registration</a>
+                  <a class="footer-link nav-link" routerLink="/login" *ngIf="!log"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login</a>
+                  <a class="footer-link nav-link" routerLink="/registration" *ngIf="!log"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;Registration</a>
+                  <a class="footer-link nav-link" *ngIf="log"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;Logout</a>
               </div>
           </div>
           
